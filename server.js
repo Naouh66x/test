@@ -31,6 +31,6 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 8080;
-server.listen(PORT, (8080) => {
+server.listen(PORT, () => {
   console.log('🎲 Serveur lancé sur http://localhost:' + PORT);
 });
