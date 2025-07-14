@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Outil JDR en Ligne</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans">
+  <div class="flex h-screen">
+    <!-- Personnages -->
+    <div class="w-1/4 p-4 bg-gray-800 overflow-y-auto">
+      <h2 class="text-xl font-bold mb-2 border-b border-gray-700 pb-1">Personnages</h2>
+      <form id="add-character" class="flex flex-col space-y-2 mb-4">
+        <input type="text" id="nom" placeholder="Nom" required class="bg-gray-700 p-1 rounded" />
+        <input type="text" id="race" placeholder="Race" required class="bg-gray-700 p-1 rounded" />
+        <input type="text" id="classe" placeholder="Classe" required class="bg-gray-700 p-1 rounded" />
+        <input type="number" id="niveau" placeholder="Niveau" value="1" min="1" required class="bg-gray-700 p-1 rounded" />
+        <input type="number" id="pv" placeholder="PV" value="10" min="1" required class="bg-gray-700 p-1 rounded" />
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 p-1 rounded">Ajouter</button>
+      </form>
+      <div id="list-personnages" class="space-y-2"></div>
+    </div>
+
+    <!-- Centre -->
+    <div class="flex-1 p-4 bg-gray-900">
+      <h2 class="text-xl font-bold mb-2 border-b border-gray-700 pb-1">Jets de Dés</h2>
+      <div class="flex items-center space-x-2 mb-2">
+        <select id="dice-type" class="bg-gray-700 p-1 rounded">
+          <option value="4">D4</option>
+          <option value="6">D6</option>
+          <option value="8">D8</option>
+          <option value="10">D10</option>
+          <option value="12">D12</option>
+          <option value="20" selected>D20</option>
+        </select>
+        <input type="number" id="dice-count" value="1" min="1" class="w-16 bg-gray-700 p-1 rounded" />
+        <button onclick="rollDice()" class="bg-green-600 hover:bg-green-700 p-1 rounded">Lancer</button>
+      </div>
+      <div id="dice-result" class="text-lg mt-2"></div>
+
+      <h2 class="text-xl font-bold mt-6 mb-2 border-b border-gray-700 pb-1">Notes MJ</h2>
+      <textarea id="notes" rows="10" class="w-full bg-gray-800 p-2 rounded"></textarea>
+    </div>
+
+    <!-- Chat -->
+    <div class="w-1/4 p-4 bg-gray-800 overflow-y-auto">
+      <h2 class="text-xl font-bold mb-2 border-b border-gray-700 pb-1">Chat</h2>
+      <div id="chat-messages" class="h-2/3 overflow-y-auto bg-gray-900 p-2 rounded mb-2"></div>
+      <form id="chat-form" class="flex space-x-2">
+        <input type="text" id="chat-user" placeholder="Pseudo" required class="w-1/3 bg-gray-700 p-1 rounded" />
+        <input type="text" id="chat-input" placeholder="Message" required class="w-2/3 bg-gray-700 p-1 rounded" />
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 p-1 rounded">Envoyer</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
